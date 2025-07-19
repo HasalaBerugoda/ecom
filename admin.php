@@ -65,11 +65,11 @@
         <input type="text" name="model" class="form-control mb-3" placeholder="Model" required>
         <input type="text" name="processor" class="form-control mb-3" placeholder="Processor" required>
         <input type="text" name="memory" class="form-control mb-3" placeholder="Memory" required>
-        <input type="text" name="storege" class="form-control mb-3" placeholder="Storege" required>
+        <input type="text" name="storage" class="form-control mb-3" placeholder="Storage" required>
         <input type="text" name="graphics" class="form-control mb-3" placeholder="Graphics" required>
         <input type="text" name="display" class="form-control mb-3" placeholder="Display" required>
         <input type="text" name="os" class="form-control mb-3" placeholder="OS" required>
-        <input type="text" name="i/o ports" class="form-control mb-3" placeholder="I/O Ports" required>
+        <input type="text" name="ioports" class="form-control mb-3" placeholder="I/O Ports" required>
         <input type="text" name="colours" class="form-control mb-3" placeholder="Colours" required>
         <input type="text" name="warranty" class="form-control mb-3" placeholder="Warranty" required>
 

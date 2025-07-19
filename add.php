@@ -10,30 +10,30 @@ include 'connection.php';
 $model = $_POST['model'];
 $processor = $_POST['processor'];
 $memory = $_POST['memory'];
-$storege = $_POST['storege'];
+$storage = $_POST['storage'];
 $graphics = $_POST['graphics'];
-$display = $_POST['diaplay'];
+$display = $_POST['display'];
 $os = $_POST['os'];
-$ioport = $_POST['i/o ports'];
+$ioport = $_POST['ioports'];
 $colours = $_POST['colours'];
 $warranty = $_POST['warranty'];
 $desc = $_POST['description'];
 
 $imageName = '';
 
-if(isset($_SESSION['image'])){
+if(isset($_FILES['image'])){
     $imageName = basename($_FILES['image']['name']);
     move_uploaded_file($_FILES['image']['tmp_name'],"images/$imageName");
 }
 
-$uid = $_SESSION['user_id'];
+$uid = $_SESSION['user_id'] = 1 ;
 
-$result = $conn->query("INSERT INTO products (user_id,model,processor,memory,storege,graphics,display,os,i/o ports,colours,warranty,description) VALUES ($uid,'$model','$processor','$memory','$storege','$graphics','$display','$os','$ioport','$colours','$warranty','$desc')");
+$result = $conn->query("INSERT INTO products (model,processor,memory,storage,graphics,display,os,ioports,colours,warranty,description,image) VALUES ('$model','$processor','$memory','$storage','$graphics','$display','$os','$ioport','$colours','$warranty','$desc','$imageName')");
 
 if($result){
-    echo "<script>alert('Successfully Added');</script>";
+    echo "<script>alert('Successfully Added');window.location.href='admin.php';</script>";
 }else{
-    echo "<script>alert('Dosen't Submit');</script>";
+    echo "<script>alert('Doesn't Submit');</script>";
 }
 
 ?>
