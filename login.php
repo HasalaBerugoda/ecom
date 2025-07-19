@@ -1,9 +1,4 @@
-<?php
-session_start();
-$_SESSION['user_logged_in'] = true;
-header("Location: home.php");
-?>
-
+<?php include "connection.php"; ?>
 
 <!DOCTYPE html>
 <html>

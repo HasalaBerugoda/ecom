@@ -1,3 +1,11 @@
+<?php include 'connection.php';
+
+// if(!isset($_SESSION['user_id'])){
+//     header("Location: login.php");
+//     exit();
+// }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +24,7 @@
             <div>
                 <a class="btn btn-outline-light me-2" href="home.php">Home</a>
                 <a class="btn btn-outline-light me-2" href="product.php">Add Products</a>
-                <a class="btn btn-outline-light me-2" href="orders.php">Orders</a>
+                <a class="btn btn-outline-light me-2" href="order.php">Orders</a>
                 <a class="btn btn-outline-light m" href="logout.php">Logout</a>
                 
             </div>
@@ -25,6 +33,7 @@
     </nav>
 
     <div class="container mt-5">
+        <h2>Add Product Details</h2>
      
     <!-- Add Task Form-- -->
     <form action="add.php" method="POST" enctype="multipart/form-data" class="mb-4 mt-3">
@@ -33,40 +42,7 @@
         <input type="file" name="image" class="form-control mb-2">
         <button type="submit" class="btn btn-primary">Add Task</button>
     </form>
-    <!-- Display Tasks -->
-    <table class="table table-bordered bg-white">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Titlec</th>
-                <th>Description</th>
-                <th>Images</th>
-                <th>Created</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $uid = $_SESSION['user_id'];
-            $res = $conn->query("SELECT * FROM task WHERE user_id = $uid");
 
-            while($row = $res->fetch_assoc()){
-                $img = $row['image'] ? "<img scr='uploads/{$row['image']}' width = '70'>":'NO IMAGE';
-                echo "<tr>
-                <td>{$row['id']}</td>
-                <td>{$row['title']}</td>
-                <td>{$row['description']}</td>
-                <td>$img</td>
-                <td>{$row['created_at']}</td>
-                <td>
-                <a href='update.php?id={$row['id']}' class='btn btn-sm btn-success'>Edit</a>
-                <a href='delete.php?id={$row['id']}' class='btn btn-sm btn-danger'>Delet</a>
-                </td>
-                </tr>";
-            }
-            ?>
-        </tbody>
-    </table>
     </div>
 
     
