@@ -1,2 +1,2 @@
 # ecom
-first e-commers web
+first e-commerce web
