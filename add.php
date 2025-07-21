@@ -2,10 +2,10 @@
 
 include 'connection.php';
 
-// if(!isset($_SESSION['user_id'])){
-//     header("Location: login.php");
-//     exit();
-// }
+if(!isset($_SESSION['user_id'])){
+    header("Location: login.php");
+    exit();
+}
 
 $model = $_POST['model'];
 $processor = $_POST['processor'];
