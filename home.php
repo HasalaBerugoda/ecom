@@ -29,7 +29,7 @@
 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a class="btn btn-outline-light m" href="logout.php">
-                        Logout (<?php echo htmlspecialchars($_SESSION['user_name']); ?>)
+                        Logout <?php echo htmlspecialchars($_SESSION['user_name']); ?>
                     </a>
                 <?php else: ?>
                     <a class="btn btn-outline-light m" href="login.php">Login</a>

@@ -18,6 +18,7 @@ $ioport = $_POST['ioports'];
 $colours = $_POST['colours'];
 $warranty = $_POST['warranty'];
 $desc = $_POST['description'];
+$brand = $_POST['brand'];
 
 $imageName = '';
 
@@ -26,9 +27,9 @@ if(isset($_FILES['image'])){
     move_uploaded_file($_FILES['image']['tmp_name'],"images/$imageName");
 }
 
-$uid = $_SESSION['user_id'] = 1 ;
+$uid = $_SESSION['user_id'] ;
 
-$result = $conn->query("INSERT INTO products (model,processor,memory,storage,graphics,display,os,ioports,colours,warranty,description,image) VALUES ('$model','$processor','$memory','$storage','$graphics','$display','$os','$ioport','$colours','$warranty','$desc','$imageName')");
+$result = $conn->query("INSERT INTO products (user_id,model,processor,memory,storage,graphics,display,os,ioports,colours,warranty,description,image,brand) VALUES ($uid,'$model','$processor','$memory','$storage','$graphics','$display','$os','$ioport','$colours','$warranty','$desc','$imageName','$brand')");
 
 if($result){
     echo "<script>alert('Successfully Added');window.location.href='admin.php';</script>";
