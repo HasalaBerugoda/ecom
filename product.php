@@ -37,6 +37,7 @@
                 <th>Brand</th>
                 <th>Description</th>
                 <th>Images</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -53,9 +54,10 @@
                 <td>{$row['brand']}</td>
                 <td>{$row['description']}</td>
                 <td>$img</td>
+                <td>{$row['status']}</td>
                 <td>
-                <a href='update.php?id={$row['id']}' class='btn btn-sm btn-success'>Edit</a>
-                <a href='delete.php?id={$row['id']}' class='btn btn-sm btn-danger'>Delet</a>
+                <a href='edit.php?id={$row['id']}' class='btn btn-sm btn-success m-1'>Edit</a>
+                <a href='delete.php?id={$row['id']}' class='btn btn-sm btn-danger m-1'>Delet</a>
                 </td>
                 </tr>";
             }

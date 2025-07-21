@@ -58,7 +58,7 @@
     </nav>
 
     <div class="container mt-5">
-        <h2>Add Product Details, <?=$_SESSION['username'] ?></h2>
+        <h2>Add Product Details</h2>
      
     <!-- Add Task Form-- -->
     <form action="add.php" method="POST" enctype="multipart/form-data" class="mb-4 mt-3">
