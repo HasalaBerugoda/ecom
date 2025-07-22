@@ -9,9 +9,9 @@ if(!isset($_SESSION['user_id'])){
 
 $uid = $_SESSION['user_id'];
 
-$id = (int)$_GET['id'];
+$id = $_GET['id'];
 
-$result = $conn->query("SELECT * FROM products WHERE id=$id AND user_id=$uid");
+$result = $conn->query("SELECT * FROM products WHERE id=$id AND user_id=$uid ");
 
 $task = $result->fetch_assoc();
 
@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
     $desc = $_POST['description'];
     $brand = $_POST['brand'];
     $status = $_POST['status'];
+    $price = $_POST['price'];
 
     $imageName = '';
 
@@ -51,10 +52,16 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
         }
     }
     
-    $update_task = $conn->query("UPDATE products SET model='$model' , processor='$processor' , memory='$memory' , storage='$storage' , graphics='$graphics' , display='$display' , os='$os' , ioports='$ioports' , colours='$colours' , warranty='$warranty' , description='$desc' , brand='$brand' , status='$status' WHERE id='$id' AND user_id='$uid' ");
+    $update_task = $conn->query("UPDATE products SET 
+    model='$model', processor='$processor', memory='$memory',
+    storage='$storage', graphics='$graphics',
+    display='$display', os='$os', ioports='$ioports',
+    colours='$colours', warranty='$warranty',
+    description='$desc', brand='$brand', status='$status', price='$price' WHERE 
+    id='$id' AND user_id='$uid'");
 
     if($update_task){
-        echo "<script>alert('Task updated successfully');window.location.href='product.php';</script>";        
+        echo "<script>alert('Task updated successfully');window.location.href='view_product.php';</script>";        
     }else{
         echo "<script>alert('Failed to update Task');</script>";
     }
@@ -68,6 +75,31 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 <head>
     <title>Edit Task</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <style>
+        button {
+
+            color: rgb(255, 255, 255);
+            background-color: rgb(255, 145, 0);
+            border: none;
+            border-radius: 5px;
+            width: 25%;
+            height: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            justify-self: left;
+            align-items: left;
+            margin-bottom: 10px
+
+        }
+
+        button:hover {
+            background-color: #1d1d1d;
+        }
+    </style>
+
 </head>
 
 <body class="container mt-4 ">
@@ -155,8 +187,13 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
     <input type="text" name="status" class="form-control" value="<?=htmlspecialchars($task['status'])?>" required>
 </div>
 
-<button type="submit" class="btn btn-primary mb-5">Update Task</button>
-<a href="product.php" class="btn btn-secondary mb-5"> Cancel</a>
+<div class="mb-3">
+    <label>Price</label>
+    <input type="number" name="price" class="form-control" value="<?=htmlspecialchars($task['price'])?>" required>
+</div>
+
+<button type="submit">Update Task</button>
+<a href="view_product.php" class="btn btn-secondary mb-5"> Cancel</a>
 
 </form>
 

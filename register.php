@@ -1,4 +1,9 @@
 <?php include 'connection.php';
+
+if(!isset($_SESSION['user_id'])){
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

@@ -19,6 +19,7 @@ $colours = $_POST['colours'];
 $warranty = $_POST['warranty'];
 $desc = $_POST['description'];
 $brand = $_POST['brand'];
+$price = $_POST['price'];
 
 $imageName = '';
 
@@ -29,7 +30,7 @@ if(isset($_FILES['image'])){
 
 $uid = $_SESSION['user_id'] ;
 
-$result = $conn->query("INSERT INTO products (user_id,model,processor,memory,storage,graphics,display,os,ioports,colours,warranty,description,image,brand) VALUES ($uid,'$model','$processor','$memory','$storage','$graphics','$display','$os','$ioport','$colours','$warranty','$desc','$imageName','$brand')");
+$result = $conn->query("INSERT INTO products (user_id,model,processor,memory,storage,graphics,display,os,ioports,colours,warranty,description,image,brand) VALUES ($uid,'$model','$processor','$memory','$storage','$graphics','$display','$os','$ioport','$colours','$warranty','$desc','$imageName','$brand','$price')");
 
 if($result){
     echo "<script>alert('Successfully Added');window.location.href='admin.php';</script>";

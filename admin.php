@@ -48,7 +48,7 @@
             <div>
                 <a class="btn btn-outline-light me-2" href="home.php">Home</a>
                 <a class="btn btn-outline-light me-2" href="admin.php">Add Products</a>
-                <a class="btn btn-outline-light me-2" href="product.php">View Products</a>
+                <a class="btn btn-outline-light me-2" href="view_product.php">View Products</a>
                 <a class="btn btn-outline-light me-2" href="order.php">Orders</a>
                 <a class="btn btn-outline-light m" href="logout.php">Logout</a>
                 
@@ -61,7 +61,7 @@
         <h2>Add Product Details</h2>
      
     <!-- Add Task Form-- -->
-    <form action="add.php" method="POST" enctype="multipart/form-data" class="mb-4 mt-3">
+    <form action="add_product.php" method="POST" enctype="multipart/form-data" class="mb-4 mt-3">
         
         <input type="text" name="brand" class="form-control mb-3" placeholder="Brand" required>
         <input type="text" name="model" class="form-control mb-3" placeholder="Model" required>
@@ -74,6 +74,7 @@
         <input type="text" name="ioports" class="form-control mb-3" placeholder="I/O Ports" required>
         <input type="text" name="colours" class="form-control mb-3" placeholder="Colours" required>
         <input type="text" name="warranty" class="form-control mb-3" placeholder="Warranty" required>
+        <input type="numbre" name="price" class="form-control mb-3" placeholder="Price" required>
 
         <textarea name="description" class="form-control mb-3" placeholder="Description" required></textarea>
 
