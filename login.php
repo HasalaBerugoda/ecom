@@ -108,37 +108,35 @@
 
             <?php
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
-                    $email = $_POST['email'];
+                    $email = trim($_POST['email']);
                     $password = $_POST['password'];
 
-                    $check = $conn->query("SELECT * FROM users WHERE email = '$email'");
+                    if(empty($email) || empty($password)) {
+                        echo "<script>alert('Email and password cannot be empty');</script>";
+                    } else {
+                        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+                        $stmt->bind_param("s", $email);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
 
-                    if ($check-> num_rows == 1){
-                        $row = $check->fetch_assoc();
+                        if ($result->num_rows == 1){
+                            $row = $result->fetch_assoc();
+                            if (password_verify($password, $row['password'])){
+                                $_SESSION['user_id'] = $row['id'];  
+                                $_SESSION['user_name'] = $row['name'];
+                                $_SESSION['role'] = $row['role'];
 
-                        if (password_verify($password, $row['password'])){
-
-                            $_SESSION['user_id'] = $row['id'];  
-                            $_SESSION['user_name'] = $row['name'];
-                            $_SESSION['role'] = $row['role'];
-
-                            if($row['role'] == 'admin'){
-                                header('Location:admin.php');
+                                header('Location: ' . ($row['role'] == 'admin' ? 'admin.php' : 'home.php'));
+                                exit();
+                            } else {
+                                echo "<script>alert('Invalid password');</script>";
                             }
-                            else{
-                                header('Location:home.php');
-                                
-                            }
-                            exit();
-
-                        }else {
-                        echo "<script>alert('Invalid Password');</script>";
+                        } else {
+                            echo "<script>alert('Invalid login');</script>";
                         }
-                    }else{
-                        echo "<script>alert('Invalid Logging');</script>";
                     }
                 }
-            ?>
+                ?>
 
         </div>
 
