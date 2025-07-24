@@ -125,7 +125,6 @@
 
 
     <footer class="footer text-center mt-3 py-3">
-
         <p><i class="bi bi-c-circle"></i> 2025 NewZone.All rights reserved.</p>
     </footer>
 

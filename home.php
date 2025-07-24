@@ -54,8 +54,8 @@
 
                 <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
                     <h3 class="display-6"><strong>Best Laptop Products in Here</strong></h3>
-                    <p class="lead"><strong> Top ASUS Laptops Available Now</strong></p>
-                    <a class="btn btn-light me-2" href="asus.html">Asus Products</a>
+                    <p class="lead"><strong> Top Laptops Available Now</strong></p>
+                    <a class="btn btn-light me-2" href="products.php">Products</a>
                 </div>
 
             </div>
@@ -64,16 +64,16 @@
 
                 <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
                     <h3 class="display-6"><strong>Best Laptop Products in Here</strong></h3>
-                    <p class="lead-"><strong> Top Dell Laptops Available Now</strong></p>
-                    <a class="btn btn-light me-2" href="dell.html">Dell Products</a>
+                    <p class="lead-"><strong> Top Laptops Available Now</strong></p>
+                    <a class="btn btn-light me-2" href="products.php">Products</a>
                 </div>
             </div>
             <div class="carousel-item">
 
                 <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100">
                     <h3 class="display-6"><strong>Best Laptop Products in Here</strong></h3>
-                    <p class="lead"><strong> Top Acer Laptops Available Now</strong></p>
-                    <a class="btn btn-light me-2" href="acer.html">Acer Products</a>
+                    <p class="lead"><strong> Top Laptops Available Now</strong></p>
+                    <a class="btn btn-light me-2" href="products.php">Products</a>
                 </div>
                 <img src="https://media.gettyimages.com/id/2165869781/photo/acer-logo-is-seen-on-a-laptop-in-this-illustration-photo-taken-in-poland-on-august-11-2024.jpg?s=612x612&w=0&k=20&c=4lMy2-3P0xi7e-FSfAqIE7CzhDcr6xk0pdNZ7KUAhTM=" class="d-block w-100" alt="...">
             </div>
@@ -121,13 +121,12 @@
                 class="video-overlay text-white text-center d-flex flex-column justify-content-center align-items-center">
                 <h1 class="display-4">Our Laptop Store</h1>
                 <p class="lead">Top ASUS, Dell, and Acer Laptops Available Now</p>
-                <a href="login.php" class="btn btn-outline-light mt-3">Login</a>
+                <a href="register.php" class="btn btn-outline-light mt-3">Sign Up</a>
             </div>
         </div>
     </div>
 
     <footer class="footer text-center mt-3 py-3">
-
         <p><i class="bi bi-c-circle"></i> 2025 NewZone.All rights reserved.</p>
     </footer>
 

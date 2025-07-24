@@ -1,5 +1,6 @@
 <?php 
 include 'connection.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -68,27 +69,8 @@ include 'connection.php';
             background-color: rgb(255, 145, 0);
         }
 
-        .btn-order {
-            color: white;
-            background-color: #6e6e6eff;
-            border: none;
-            border-radius: 5px;
-            width: 80%;
-            height: 40px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            display: block;
-            justify-self: center;
-            align-items: center;
-        }
-
-        .btn-order:hover {
-            background-color: rgb(255, 145, 0);
-        }
-
         .filter-section {
-            background-color: #f3f3f3ff;
+            background-color: #ffffffff;
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -196,7 +178,7 @@ include 'connection.php';
 
                 <div class="row mt-4">
                     <div class="col-12 text-center">
-                        <button type="submit" class="btn-apply">Apply Filters</button>
+                        <button type="submit" class="btn btn-primary">Apply Filters</button>
                         <a href="products.php" class="btn btn-secondary">Reset Filters</a>
                     </div>
                 </div>              
@@ -267,7 +249,7 @@ include 'connection.php';
                             <button class="btn-details" data-bs-toggle="modal" data-bs-target="#productModal<?= $row['id'] ?>">
                                 More Details
                             </button>
-                            <button class="btn-order" data-bs-toggle="modal" data-bs-target="#orderModal<?= $row['id'] ?>">
+                            <button class="btn-details" data-bs-toggle="modal" data-bs-target="#orderModal<?= $row['id'] ?>">
                                 Place Order
                             </button>
                         </div>
@@ -285,7 +267,7 @@ include 'connection.php';
                             <div class="modal-body">
                                 <div class="text-center">
                                     <img src="<?= $imagePath ?>" alt="<?= htmlspecialchars($row['model']) ?>" class="img-fluid mb-3" style="max-height: 250px;">
-                                    <p><strong><?= htmlspecialchars($row['description']) ?></strong></p>
+                                    <p><strong><?= htmlspecialchars($row['short_description']) ?></strong></p>
                                 </div>
                             
                                 <h5><strong>Product Specification</strong></h5><br>
@@ -303,8 +285,6 @@ include 'connection.php';
                                 </ul>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#orderModal<?= $row['id'] ?>">Place Order</button>
-                                <button class="btn-apply" data-bs-toggle="modal" data-bs-target="#cartModal<?= $row['id'] ?>">Add Cart</button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -320,7 +300,7 @@ include 'connection.php';
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="order.php" method="POST">
+                                <form action="process_order.php" method="POST">
                                     <input type="hidden" name="product_id" value="<?= $row['id'] ?>">
                                     <div class="mb-3">
                                         <label for="quantity" class="form-label">Quantity</label>
@@ -338,7 +318,7 @@ include 'connection.php';
                                         <label for="address" class="form-label">Shipping Address</label>
                                         <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
                                     </div>
-                                    <button type="submit" class="btn-details">Confirm Order</button>
+                                    <button type="submit" class="btn btn-primary">Confirm Order</button>
                                 </form>
                             </div>
                         </div>
