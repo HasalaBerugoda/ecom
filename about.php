@@ -5,7 +5,9 @@
     <title>laps.lk</title>
 
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -19,9 +21,18 @@
             <div>
                 <a class="btn btn-outline-light me-2" href="home.php">Home</a>
                 <a class="btn btn-outline-light me-2" href="products.php">Products</a>
-                <a class="btn btn-outline-light me-2" href="contact.html">Contact</a>
-                <a class="btn btn-outline-light m" href="about.php">About Us</a>
+                <a class="btn btn-outline-light me-2" href="contact.php">Contact</a>
+                <a class="btn btn-outline-light m" href="order_history.php"><i class="bi bi-bag-fill"></i> Orders</a>
+                <a class="btn btn-outline-light m" href="cart.php"><i class="bi bi-cart-fill"></i> Cart</a>
 
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a class="btn btn-outline-light m" href="logout.php">
+                        Logout <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+                    </a>
+                <?php else: ?>
+                    <a class="btn btn-outline-light m" href="login.php">Login</a>
+                <?php endif; ?>
+                
             </div>
         </div>
     </nav>
@@ -112,7 +123,7 @@
     <section class="text-center bg-dark text-white py-5">
         <h2>Want to know more?</h2>
         <p>Visit our contact page or drop by our store to meet us in person!</p>
-        <a href="contact.html" class="btn btn-light mt-2">Contact Us</a>
+        <a href="contact.php" class="btn btn-light mt-2">Contact Us</a>
     </section>
 
     <!-- Location Map -->

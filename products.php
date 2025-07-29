@@ -1,5 +1,13 @@
 <?php 
 include 'connection.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: login.php?redirect=products.php");
+        exit();
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -8,8 +16,9 @@ include 'connection.php';
 <head>
     <title>Products</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <style>
         .status {
@@ -136,16 +145,18 @@ include 'connection.php';
 
             <div class="d-flex flex-wrap">
                 <a class="btn btn-outline-light me-2" href="home.php">Home</a>
-                <a class="btn btn-outline-light me-2" href="products.php">Products</a>
-                <a class="btn btn-outline-light me-2" href="contact.html">Contact</a>
+                <a class="btn btn-outline-light me-2" href="contact.php">Contact</a>
                 <a class="btn btn-outline-light me-2" href="about.php">About Us</a>
+                <a class="btn btn-outline-light m" href="order_history.php"><i class="bi bi-bag-fill"></i> Orders</a>
+                <a class="btn btn-outline-light m" href="cart.php"><i class="bi bi-cart-fill"></i> Cart</a>
                 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a class="btn btn-outline-light" href="logout.php">
-                        Logout <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+                        <i class="bi bi-box-arrow-right"></i>
+                         Logout <?php echo htmlspecialchars($_SESSION['user_name']); ?>
                     </a>
                 <?php else: ?>
-                    <a class="btn btn-outline-light" href="login.php">Login</a>
+                    <a class="btn btn-outline-light" href="login.php"><i class="bi bi-box-arrow-in-right"></i> Login</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -320,7 +331,7 @@ include 'connection.php';
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="order.php" method="POST">
+                                <form action="process_order.php" method="POST">
                                     <input type="hidden" name="product_id" value="<?= $row['id'] ?>">
                                     <div class="mb-3">
                                         <label for="quantity" class="form-label">Quantity</label>
@@ -335,6 +346,10 @@ include 'connection.php';
                                         <input type="email" class="form-control" id="email" name="email" required>
                                     </div>
                                     <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="number" class="form-control" id="phone" name="phone" required>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="address" class="form-label">Shipping Address</label>
                                         <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
                                     </div>
@@ -344,6 +359,37 @@ include 'connection.php';
                         </div>
                     </div>
                 </div>
+
+                <!-- Cart Modal -->
+                <div class="modal fade" id="cartModal<?= $row['id'] ?>" tabindex="-1" aria-labelledby="cartModalLabel<?= $row['id'] ?>" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-4 text-center" id="cartModalLabel<?= $row['id'] ?>">Add <?= htmlspecialchars($row['model']) ?> to Cart</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="add_to_cart.php" method="POST">
+                                    <input type="hidden" name="product_id" value="<?= $row['id'] ?>">
+                                    <input type="hidden" name="product_name" value="<?= htmlspecialchars($row['model']) ?>">
+                                    <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
+                                    <input type="hidden" name="product_image" value="<?= htmlspecialchars($row['image']) ?>">
+                                    
+                                    <div class="mb-3">
+                                        <label for="cart_quantity" class="form-label">Quantity</label>
+                                        <input type="number" class="form-control" id="cart_quantity" name="quantity" min="1" value="1" required>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-between">
+                                        <button type="submit" class="btn-details">Add to Cart</button><br>
+                                        <button type="button" class="btn-apply" data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             <?php 
                 endwhile;
             else:
@@ -360,6 +406,9 @@ include 'connection.php';
         <p><i class="bi bi-c-circle"></i> 2025 NewZone. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
 </html>

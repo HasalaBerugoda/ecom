@@ -9,9 +9,20 @@ if(!isset($_SESSION['user_id'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>View Products</title>
+    <title>Product Management</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+
+    <style>      
+        .table-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+
 </head>
 <body>
 
@@ -22,10 +33,10 @@ if(!isset($_SESSION['user_id'])){
             </a>
 
             <div>
-                <a class="btn btn-outline-light me-2" href="home.php">Home</a>
+                
                 <a class="btn btn-outline-light me-2" href="admin.php">Add Products</a>
                 <a class="btn btn-outline-light me-2" href="view_product.php">View Products</a>
-                <a class="btn btn-outline-light me-2" href="order.php">Orders</a>
+                <a class="btn btn-outline-light me-2" href="view_order.php">Orders</a>
                 <a class="btn btn-outline-light m" href="logout.php">Logout</a>
                 
             </div>
@@ -35,7 +46,9 @@ if(!isset($_SESSION['user_id'])){
 
     <div class= "m-5">
     <!-- Display Tasks -->
-    <table class="table table-bordered bg-white">
+    <div class="table-container">
+        <h2 class="mb-4">Product Management</h2>
+        <table class="table table-bordered table-hover">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
@@ -62,7 +75,7 @@ if(!isset($_SESSION['user_id'])){
                 <td>{$row['status']}</td>
                 <td>
                 <a href='edit.php?id={$row['id']}' class='btn btn-sm btn-success m-1'>Edit</a>
-                <a href='delete.php?id={$row['id']}' class='btn btn-sm btn-danger m-1'>Delet</a>
+                <a href='delete_product.php?id={$row['id']}' class='btn btn-sm btn-danger m-1'>Delet</a>
                 </td>
                 </tr>";
             }

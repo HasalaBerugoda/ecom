@@ -1,9 +1,9 @@
 <?php include 'connection.php';
 
-// if(!isset($_SESSION['user_id'])){
-//     header("Location: login.php");
-//     exit();
-// }
+if(!isset($_SESSION['user_id'])){
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +46,10 @@
             </a>
 
             <div>
-                <a class="btn btn-outline-light me-2" href="home.php">Home</a>
-                <a class="btn btn-outline-light me-2" href="products.php">Products</a>
+                
                 <a class="btn btn-outline-light me-2" href="admin.php">Add Products</a>
                 <a class="btn btn-outline-light me-2" href="view_product.php">View Products</a>
-                <a class="btn btn-outline-light me-2" href="order.php">Orders</a>
+                <a class="btn btn-outline-light me-2" href="view_order.php">Orders</a>
                 <a class="btn btn-outline-light m" href="logout.php">Logout</a>
                 
             </div>
