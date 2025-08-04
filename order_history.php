@@ -48,6 +48,26 @@ if (!$orders) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <style>
+
+        .btn-shopping {
+            color: white;
+            background-color: #1d1d1d;
+            border: none;
+            border-radius: 5px;
+            width: 25%;
+            height: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            display: block;
+            justify-self: center;
+            align-items: center;
+        }
+
+        .btn-shopping:hover {
+            background-color: rgb(255, 145, 0);
+        }
+
         .status-badge {
             min-width: 90px;
             display: inline-block;
@@ -60,7 +80,7 @@ if (!$orders) {
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <nav class="navbar" data-bs-theme="dark">
         <div class="container-fluid py-3">
             <a class="navbar-brand" href="home.php">
                 <img src="images/logo.png" alt="Logo" width="100" height="30" class="d-inline-block align-text-top">
@@ -91,9 +111,9 @@ if (!$orders) {
     <div class="container mt-5 mb-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2><i class="bi bi-clock-history"></i> Your Order History</h2>
-            <a href="products.php" class="btn btn-primary">
+            <button href="products.php" class="btn-shopping">
                 <i class="bi bi-cart-plus"></i> Continue Shopping
-            </a>
+                </button>
         </div>
         
         <?php if ($orders->num_rows > 0): ?>
@@ -151,8 +171,8 @@ if (!$orders) {
         <?php endif; ?>
     </div>
 
-    <footer class="footer bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
+    <footer class="footer text-white py-4 mt-5">
+        <div class="container text-center">
             <p class="mb-0"><i class="bi bi-c-circle"></i> 2025 NewZone. All rights reserved.</p>
         </div>
     </footer>

@@ -46,16 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $success = true;
             
-            // Clear form on success
+           
             $name = $email = $subject = $message = '';
             
-            // Optional: Send email notification
-            /*
-            $to = "your@email.com";
-            $headers = "From: $email\r\n";
-            $email_subject = "New Contact Form Submission: $subject";
-            mail($to, $email_subject, $message, $headers);
-            */
             
         } catch (Exception $e) {
             $errors['database'] = 'Error submitting your message. Please try again later.';
@@ -72,6 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            
+        }
+        
         .contact-info-card {
             transition: transform 0.3s;
         }
@@ -79,9 +79,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transform: translateY(-5px);
         }
         .form-control:focus {
-            border-color: #0d6efd;
+            border-color: #000000ff;
             box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
         }
+
+        .btn-send {
+            color: white;
+            background-color: #1d1d1d;
+            border: none;
+            border-radius: 5px;
+            width: 90%;
+            height: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            justify-self: center;
+            align-items: center;
+        }
+
+        .btn-send:hover {
+            background-color: rgb(255, 145, 0);
+        }
+        
     </style>
 </head>
 <body>
@@ -134,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="row g-4">
             <!-- Contact Information -->
             <div class="col-lg-5">
-                <div class="card shadow-sm h-100">
+                <div class="card h-100 shadow ">
                     <div class="card-body p-4">
                         <h3 class="card-title mb-4"><i class="bi bi-info-circle"></i> Our Information</h3>
                         
@@ -196,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <!-- Contact Form -->
             <div class="col-lg-7">
-                <div class="card shadow-sm">
+                <div class="card h-100 shadow">
                     <div class="card-body p-4">
                         <h3 class="card-title mb-4"><i class="bi bi-send"></i> Send Us a Message</h3>
                         
@@ -247,7 +267,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                                 
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary px-4 py-2">
+                                    <button type="submit" class="btn-send">
                                         <i class="bi bi-send-fill"></i> Send Message
                                     </button>
                                 </div>
@@ -259,12 +279,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <footer class="bg-dark text-white py-4 mt-5">
+    <footer class="footer text-white py-4 mt-5">
         <div class="container text-center">
             <p class="mb-0"><i class="bi bi-c-circle"></i> 2025 NewZone. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
 </html>

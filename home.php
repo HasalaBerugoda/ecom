@@ -131,8 +131,11 @@
         </div>
     </div>
 
-    <footer class="footer text-center mt-3 py-3">
-        <p><i class="bi bi-c-circle"></i> 2025 NewZone.All rights reserved.</p>
+    
+    <footer class="footer text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0"><i class="bi bi-c-circle"></i> 2025 NewZone. All rights reserved.</p>
+        </div>
     </footer>
 
 </body>

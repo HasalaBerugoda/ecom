@@ -27,10 +27,11 @@
 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <a class="btn btn-outline-light m" href="logout.php">
-                        Logout <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+                        <i class="bi bi-box-arrow-right"></i>
+                         Logout <?php echo htmlspecialchars($_SESSION['user_name']); ?>
                     </a>
                 <?php else: ?>
-                    <a class="btn btn-outline-light m" href="login.php">Login</a>
+                    <a class="btn btn-outline-light m" href="login.php"><i class="bi bi-box-arrow-in-right"></i> Login</a>
                 <?php endif; ?>
                 
             </div>
@@ -44,7 +45,7 @@
 
     <!-- About Content -->
     <section class="container my-5">
-        <div class="row align-items-center">
+        <div class="row align-items-center ">
             <div class="col-md-6">
                 <img src="https://images.pexels.com/photos/1595391/pexels-photo-1595391.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team" class="img-fluid rounded shadow" />
             </div>
@@ -135,8 +136,10 @@
     </section>
 
 
-    <footer class="footer text-center mt-3 py-3">
-        <p><i class="bi bi-c-circle"></i> 2025 NewZone.All rights reserved.</p>
+    <footer class="footer text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0"><i class="bi bi-c-circle"></i> 2025 NewZone. All rights reserved.</p>
+        </div>
     </footer>
 
 </body>

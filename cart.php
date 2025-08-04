@@ -49,7 +49,7 @@ if(!isset($_SESSION['user_id'])){
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar">
         <div class="container-fluid py-3">
             <a class="navbar-brand" href="home.php">
                 <img src="images/logo.png" alt="Logo" width="100" height="30" class="d-inline-block align-text-top">
@@ -63,12 +63,14 @@ if(!isset($_SESSION['user_id'])){
                 <a class="btn btn-outline-light m" href="order_history.php"><i class="bi bi-bag-fill"></i> Order</a>
                 
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <a class="btn btn-outline-light" href="logout.php">
+                    <a class="btn btn-outline-light m" href="logout.php">
+                        <i class="bi bi-box-arrow-right"></i>
                          Logout <?php echo htmlspecialchars($_SESSION['user_name']); ?>
                     </a>
                 <?php else: ?>
-                    <a class="btn btn-outline-light" href="login.php"> Login</a>
+                    <a class="btn btn-outline-light m" href="login.php"><i class="bi bi-box-arrow-in-right"></i> Login</a>
                 <?php endif; ?>
+
             </div>
         </div>
     </nav>
@@ -149,17 +151,25 @@ if(!isset($_SESSION['user_id'])){
                 </div>
             </div>
         <?php else: ?>
-            <div class="alert alert-info">
-                Your cart is empty. <a href="products.php" class="alert-link">Continue shopping</a>
+            <div class="alert alert-info text-center py-4">
+                <i class="bi bi-cart-x" style="font-size: 2rem;"></i>
+                <h4 class="mt-3">You cart is empty.</h4>
+                <p class="mb-0">Browse our products and make your first purchase!</p>
+                <a href="products.php" class="btn btn-primary mt-3">
+                    <i class="bi bi-cart-plus"></i> Shop Now
+                </a>
             </div>
         <?php endif; ?>
     </div>
 
-    <footer class="footer text-center mt-5 py-3 bg-dark text-white">
-        <p><i class="bi bi-c-circle"></i> 2025 NewZone. All rights reserved.</p>
+    <footer class="footer text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0"><i class="bi bi-c-circle"></i> 2025 NewZone. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    
     <script>
         // Quantity control buttons
         document.querySelectorAll('.increase-qty').forEach(button => {
@@ -179,4 +189,5 @@ if(!isset($_SESSION['user_id'])){
         });
     </script>
 </body>
+
 </html>

@@ -52,6 +52,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .card {
             border: none;
             border-radius: 12px;
+            
+        }
+
+        .card-hov {
+            transition: transform 0.3s;
+        }
+
+        .card-hov:hover {
+            transform: translateY(-5px);
         }
 
         .card-title {
@@ -137,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar ">
         <div class="container-fluid py-3">
             <a class="navbar-brand" href="home.php">
                 <img src="images/logo.png" alt="Logo" width="100" height="30" class="d-inline-block align-text-top">
@@ -264,7 +273,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $statusClass = ($row['status'] === 'in stock') ? 'status' : 'out';
             ?>
                 <div class="col">
-                    <div class="card h-100 shadow">
+                    <div class="card-hov card h-100 shadow">
                         <span class="badge position-absolute top-0 end-0 m-2 <?= $statusClass ?>">
                             <?= ucfirst(htmlspecialchars($row['status'])) ?>
                         </span>
@@ -393,7 +402,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php 
                 endwhile;
             else:
-                echo '<div class="col-12"><div class="no-products">No products found matching your criteria</div></div>';
+                echo '<div class="container text-center"><div class="no-products">No products found matching your criteria!</div></div>';
             endif;
 
             $stmt->close();
@@ -402,8 +411,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <footer class="footer text-center mt-3 py-3 bg-dark text-white">
-        <p><i class="bi bi-c-circle"></i> 2025 NewZone. All rights reserved.</p>
+    <footer class="footer text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0"><i class="bi bi-c-circle"></i> 2025 NewZone. All rights reserved.</p>
+        </div>
     </footer>
 
     
